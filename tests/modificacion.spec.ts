@@ -1,34 +1,29 @@
 import 'mocha';
 import {expect} from 'chai';
-import {add, substract} from '../src/modificacion/modificacion';
+import {SubtractMapReduce} from '../src/modificacion/substractMapReduce';
+import {AddMapReduce} from '../src/modificacion/addMapReduce';
+import {funcionCliente} from '../src/modificacion/funcionCliente';
 
-describe('add function tests', () => {
-  it('add(1, 8) returns value 9', () => {
-    expect(add(1, 8)).to.be.equal(9);
+describe('pruebas addMap', () => {
+  it('Pruebas para addMapReduce', () => {
+    const addMap = new AddMapReduce([1, 2, 3], 2, 1);
+    expect(addMap).not.eq(null);
   });
-
-  it('add(-1, 8) returns value 7', () => {
-    expect(add(-1, 8)).to.be.equal(7);
-  });
-
-  it('add(1.2, 3.5) returns value 4.7', () => {
-    expect(add(1.2, 3.5)).to.be.approximately(4.7, 0.000000000001);
+  it('Funcion run', () => {
+    const addMap = new AddMapReduce([1, 2, 3], 2, 1);
+    expect(addMap.getnumberV()).to.eql([1, 2, 3]);
+    expect(funcionCliente(addMap)).to.eql(12);
   });
 });
 
-describe('substract function tests', () => {
-  it('substract(7, 1) returns value 6', () => {
-    expect(substract(7, 1)).to.be.equal(6);
+describe('pruebas substractMap', () => {
+  it('Pruebas para addMapReduce', () => {
+    const addMap = new SubtractMapReduce([1, 2, 3], 2, 1);
+    expect(addMap).not.eq(null);
   });
-
-  it('substract(6.7, 3.1) returns value 3.6', () => {
-    expect(substract(6.7, 3.1)).to.be.approximately(3.6, 0.000000000001);
-  });
-
-  it('substract(5, 7) returns value -2', () => {
-    expect(substract(5, 7)).to.be.equal(-2);
-  });
-  it('substract(6.7, 9.8) returns value -3.1', () => {
-    expect(substract(6.7, 9.8)).to.be.approximately(-3.1, 0.000000000001);
+  it('Funcion run', () => {
+    const addMap = new SubtractMapReduce([1, 2, 3], 2, 1);
+    expect(addMap.getnumberV()).to.eql([1, 2, 3]);
+    expect(funcionCliente(addMap)).to.eql(0);
   });
 });
