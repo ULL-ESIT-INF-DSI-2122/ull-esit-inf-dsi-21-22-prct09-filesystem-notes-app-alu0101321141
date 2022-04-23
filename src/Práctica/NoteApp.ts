@@ -2,6 +2,9 @@ import * as yargs from 'yargs';
 import { GestorNotas } from './GestorNotas';
 import { Notas } from './Notas';
 
+/**
+ * Comando add
+ */
 yargs.command({
   command: 'add',
   describe: 'Añade una nota nueva',
@@ -37,6 +40,9 @@ yargs.command({
   },
 });
 
+/**
+ * comando modify
+ */
 yargs.command({
   command: 'modify',
   describe: 'Modifica una nota que existia antes',
@@ -72,6 +78,9 @@ yargs.command({
   },
 });
 
+/**
+ * comando delete
+ */
 yargs.command({
   command: 'delete',
   describe: 'Elimina una nota que existia antes',
@@ -95,9 +104,12 @@ yargs.command({
   },
 });
 
+/**
+ * comando list
+ */
 yargs.command({
   command: 'list',
-  describe: 'Modifica una nota que existia antes',
+  describe: 'Muestra titulos de las notas',
   builder: {
     user: {
       describe: 'name User',
@@ -113,9 +125,12 @@ yargs.command({
   },
 });
 
+/**
+ * comando litNote
+ */
 yargs.command({
   command: 'listNote',
-  describe: 'Modifica una nota que existia antes',
+  describe: 'Muestra una nota que existia antes',
   builder: {
     user: {
       describe: 'name User',
