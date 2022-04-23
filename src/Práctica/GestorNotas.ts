@@ -22,22 +22,22 @@ export class GestorNotas {
   addNotes(nameUser:string, Notes:Notas):string {
     let archiveRoute:string = './AppDataBase/' + nameUser;
     if (fs.existsSync(`${archiveRoute}`)) {
-      console.log(chalk.green('Bienvenido de vuelta usuario', nameUser));
+      console.log(chalk.black.bgGreenBright('Bienvenido de vuelta usuario', nameUser));
       archiveRoute = archiveRoute + "/" + Notes.getTitle() + ".json";
       if (fs.existsSync(`${archiveRoute}`)) {
-        console.log(chalk.red('Error, la nota ya existe.'));
+        console.log(chalk.black.bgRedBright('Error, la nota ya existe.'));
         return 'error';
       } else {
         fs.writeFileSync(`${archiveRoute}`, Notes.toString());
-        console.log(chalk.green('Se ha creado la nota satisfactoriamente'));
+        console.log(chalk.black.bgGreenBright('Se ha creado la nota satisfactoriamente'));
         return 'correcto';
       }
     } else {
-      console.log(chalk.green("Usuario Nuevo, bienvenido ", nameUser));
+      console.log(chalk.black.bgGreenBright("Usuario Nuevo, bienvenido ", nameUser));
       fs.mkdirSync(`${archiveRoute}`, {recursive: true});
       archiveRoute = archiveRoute + "/" + Notes.getTitle() + ".json";
       fs.writeFileSync(`${archiveRoute}`, Notes.toString());
-      console.log(chalk.green('Se ha creado la nota satisfactoriamente'));
+      console.log(chalk.black.bgGreenBright('Se ha creado la nota satisfactoriamente'));
       return 'correcto';
     }
   }
@@ -53,10 +53,10 @@ export class GestorNotas {
     archiveRoute = archiveRoute + "/" + modifyNote.getTitle() + ".json";
     if (fs.existsSync(`${archiveRoute}`)) {
       fs.writeFileSync(`${archiveRoute}`, modifyNote.toString());
-      console.log(chalk.green('La nota se ha modificado satisfactoriamente'));
+      console.log(chalk.black.bgGreenBright('La nota se ha modificado satisfactoriamente'));
       return 'correcto';
     } else {
-      console.log(chalk.red('La nota que desea modificar no existe'));
+      console.log(chalk.black.bgRedBright('La nota que desea modificar no existe'));
       return 'error';
     }
   }
@@ -72,10 +72,10 @@ export class GestorNotas {
     archiveRoute = archiveRoute + "/" + noteTilte + ".json";
     if (fs.existsSync(`${archiveRoute}`)) {
       fs.rmSync(`${archiveRoute}`);
-      console.log(chalk.green('La nota se ha eliminado correctamente'));
+      console.log(chalk.black.bgGreenBright('La nota se ha eliminado correctamente'));
       return 'correcto';
     } else {
-      console.log(chalk.red('Error dicha nota no existe'));
+      console.log(chalk.black.bgRedBright('Error dicha nota no existe'));
       return 'error';
     }
   }
@@ -88,7 +88,7 @@ export class GestorNotas {
   listTitles(nameUser:string):string {
     let archiveRoute:string = './AppDataBase/' + nameUser;
     if (fs.existsSync(`${archiveRoute}`)) {
-      console.log(chalk.green('Las notas con sus títulos son:'));
+      console.log(chalk.black.bgGreenBright('Las notas con sus títulos son:'));
       archiveRoute += "/";
       const namefiles = fs.readdirSync(`${archiveRoute}`);
       namefiles.forEach((fileName) => {
@@ -98,7 +98,7 @@ export class GestorNotas {
       });
       return 'correcto';
     } else {
-      console.log(chalk.red('El usuario no tiene ninguna nota'));
+      console.log(chalk.black.bgRedBright('El usuario no existe'));
       return 'error';
     }
   }
@@ -118,7 +118,7 @@ export class GestorNotas {
       const namefiles = fs.readdirSync(`${archiveRoute}`);
       namefiles.forEach((fileName) => {
         if (noteTilte == fileName) {
-          console.log(chalk.green('La nota es: '));
+          console.log(chalk.black.bgGreenBright('La nota es: '));
           const fileContent = fs.readFileSync(archiveRoute + fileName);
           const json = JSON.parse(fileContent.toString());
           this.printWithColor(json.color, json.title);
@@ -130,11 +130,11 @@ export class GestorNotas {
       if (flag) {
         return 'correcto';
       } else {
-        console.log(chalk.red('El usuario no tiene ninguna nota con ese nombre'));
+        console.log(chalk.black.bgRedBright('El usuario no tiene ninguna nota con ese nombre'));
         return 'error';
       }
     } else {
-      console.log(chalk.red('El usuario no existe'));
+      console.log(chalk.black.bgRedBright('El usuario no existe'));
       return 'error';
     }
   }
@@ -146,13 +146,13 @@ export class GestorNotas {
    */
   private printWithColor(color:string, text:string) {
     if (color == 'verde' || color == 'green') {
-      console.log(chalk.green(text));
+      console.log(chalk.black.bgGreenBright(text));
     } else if (color == 'rojo' || color == 'red') {
-      console.log(chalk.red(text));
+      console.log(chalk.black.bgRedBright(text));
     } else if (color == 'azul' || color == 'blue') {
-      console.log(chalk.blue(text));
+      console.log(chalk.black.bgBlueBright(text));
     } else if (color == 'amarillo' || color == 'yellow') {
-      console.log(chalk.yellow(text));
+      console.log(chalk.black.bgYellowBright(text));
     }
   }
 }
