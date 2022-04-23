@@ -1,6 +1,12 @@
 {
   "entryPoints": [
-    "./src/basicFunctions.ts"
+    "./src/Práctica/gestorNotas.ts",
+    "./src/Práctica/Notas.ts",
+    "./src/Práctica/NoteApp.ts",
+    "./src/modificacion/addMapReduce.ts",
+    "./src/modificacion/funcionCliente.ts",
+    "./src/modificacion/MapReduceAlgorithm.ts",
+    "./src/modificacion/substractMapReduce.ts"
   ],
   "out": "./docs"
 }
